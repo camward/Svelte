@@ -1,20 +1,26 @@
 <script>
-	let name = 'Local H1'
-	let src = 'https://ru.svelte.dev/svelte-logo-horizontal.svg'
-	let text = 'Local H2'
-	let htmlText = '<b>Strong</b> text'
+	let name = 'Svelte'
+	let inputValue = ''
+
+	function changeNameHandler() {
+		name = 'Canged name'
+	}
+
+	function submitHandler() {
+		name = inputValue
+	}
 </script>
 
 <style>
 	h1 {
 		color: purple;
 	}
-	:global(h2) {
-		color: green;
-	}
 </style>
 
+<form on:submit|preventDefault="{submitHandler}">
+	<input type="text" on:input="{event => (inputValue = event.target.value)}" />
+	<button type="submit">Submit</button>
+</form>
+
 <h1>{name}!</h1>
-<img src="{src}" alt="{text}" />
-<h2>{text.toUpperCase()}!</h2>
-<p>{@html htmlText}</p>
+<button on:click="{changeNameHandler}">Change name</button>
