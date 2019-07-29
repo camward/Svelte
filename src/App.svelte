@@ -1,6 +1,5 @@
 <script>
-	let name = 'Svelte'
-	let check = true
+	let value = 'Svelte'
 </script>
 
 <style>
@@ -9,6 +8,13 @@
 	}
 </style>
 
-<h1>{name}!</h1>
-<input type="text" bind:value="{name}" />
-<input type="checkbox" bind:checked="{check}" />
+<h1>if-else</h1>
+<input type="text" bind:value />
+
+{#if value.length < 5}
+	<p>Длина меньше 5</p>
+{:else if value.length > 10}
+	<p>Длина больше 10</p>
+{:else}
+	<p>Длина между 5 и 10</p>
+{/if}
