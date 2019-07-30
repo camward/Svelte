@@ -14,5 +14,10 @@
 </style>
 
 <h1>Application</h1>
-<Person name="{people[0].name}" age="{people[0].age}" />
-<Person {...people[1]} />
+
+<!--i - индекс, (person.id) - уникальный элемент-->
+{#each people as person, i (person.id)}
+	<Person {...person} index="{i}" />
+{:else}
+	<p>No people</p>
+{/each}
