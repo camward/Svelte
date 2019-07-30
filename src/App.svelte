@@ -1,5 +1,10 @@
 <script>
-	let value = 'Svelte'
+	import Person from "./Person.svelte"
+
+	const people = [
+		{id: 1, name: 'Max', age: 24},
+		{id: 2, name: 'Jo', age: 32}
+	]
 </script>
 
 <style>
@@ -8,13 +13,6 @@
 	}
 </style>
 
-<h1>if-else</h1>
-<input type="text" bind:value />
-
-{#if value.length < 5}
-	<p>Длина меньше 5</p>
-{:else if value.length > 10}
-	<p>Длина больше 10</p>
-{:else}
-	<p>Длина между 5 и 10</p>
-{/if}
+<h1>Application</h1>
+<Person name="{people[0].name}" age="{people[0].age}" />
+<Person {...people[1]} />
